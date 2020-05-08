@@ -5,70 +5,29 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Pick A Show To Begin</p>
+    <h1 class="display-4">Welcome To Kangaroo</h1>
+    <p>Pick A Movie To Begin</p>
 
     <div class="row text-center text-lg-left">
+        @{
+            foreach (var movie in Model.movies)
+            {
+                <div class="col-lg-3 col-md-4 col-6">
+                    <a href="#" class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail" src="@movie.Poster" alt="">
+                        <p>@movie.Title</p>
+                    </a>
+                </div>
+            }
+        }
 
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">
-            </a>
-        </div>
+
+        @*<div class="col-lg-3 col-md-4 col-6">
+                <a href="#" class="d-block mb-4 h-100">
+                    <img class="img-fluid img-thumbnail" src="@movieList.data.movies[0]["large_cover_image"]" alt="">
+                    <p>@movieList.data.movies[0]["title_long"]</p>
+                </a>
+            </div>*@
+
     </div>
 </div>
