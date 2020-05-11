@@ -15,17 +15,15 @@ namespace Kangaroo.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly CacheLoader _cacheLoader;
-        private readonly MovieToModel _movieToModel;
         public List<MovieModel> movies { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, CacheLoader cacheLoader, MovieToModel movieToModel)
+        public IndexModel(ILogger<IndexModel> logger, CacheLoader cacheLoader)
         {
             _logger = logger;
             _cacheLoader = cacheLoader;
-            _movieToModel = movieToModel;
-
             _cacheLoader.APIToCache();
-            movies = _movieToModel.PopulateList();
+
+            movies = _cacheLoader.LoadMoviesAsync().Result;
         }
 
         public void OnGet()

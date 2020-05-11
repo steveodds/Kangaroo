@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Kangaroo.Managers;
+using Kangaroo.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +27,9 @@ namespace Kangaroo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<CacheLoader>();
+            services.AddControllers();
+            services.AddDbContext<MovieContext>(opt => opt.UseInMemoryDatabase("Movies"));
+            services.AddScoped<CacheLoader>();
             services.AddSingleton<MovieToModel>();
         }
 
@@ -53,6 +57,7 @@ namespace Kangaroo
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

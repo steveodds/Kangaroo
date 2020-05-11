@@ -17,28 +17,28 @@ namespace Kangaroo.Managers
         private const string movieSuggestionsUrl = "https://yts.mx/api/v2/movie_suggestions.json";
         public static async Task<MovieListModel> GetMovieListAsync(int resultLimit = 20)
         {
-            using (var client = new HttpClient())
+            using var client = new HttpClient
             {
-                client.BaseAddress = new Uri(movieListUrl);
-                var result = await client.GetAsync($"?limit={resultLimit}&sort_by=year");
-                result.EnsureSuccessStatusCode();
-                var resultContent = await result.Content.ReadAsStringAsync();
+                BaseAddress = new Uri(movieListUrl)
+            };
+            var result = await client.GetAsync($"?limit={resultLimit}&sort_by=year");
+            result.EnsureSuccessStatusCode();
+            var resultContent = await result.Content.ReadAsStringAsync();
 
-                return JsonSerializer.Deserialize<MovieListModel>(resultContent);
-            }
+            return JsonSerializer.Deserialize<MovieListModel>(resultContent);
         }
 
         public static async Task<MovieDetailsModel> GetMovieDetailsAsync(int movieID)
         {
-            using (var client = new HttpClient())
+            using var client = new HttpClient
             {
-                client.BaseAddress = new Uri(movieDetailsUrl);
-                var result = await client.GetAsync($"?movie_id={movieID}&with_images=true&with_cast=true");
-                result.EnsureSuccessStatusCode();
-                var resultContent = await result.Content.ReadAsStringAsync();
+                BaseAddress = new Uri(movieDetailsUrl)
+            };
+            var result = await client.GetAsync($"?movie_id={movieID}&with_images=true&with_cast=true");
+            result.EnsureSuccessStatusCode();
+            var resultContent = await result.Content.ReadAsStringAsync();
 
-                return JsonSerializer.Deserialize<MovieDetailsModel>(resultContent);
-            }
+            return JsonSerializer.Deserialize<MovieDetailsModel>(resultContent);
         }
 
         public static async Task<MovieSuggestionsModel> GetMovieSuggestionsAsync(int movieID)
