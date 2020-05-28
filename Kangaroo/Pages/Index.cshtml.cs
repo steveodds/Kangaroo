@@ -21,9 +21,10 @@ namespace Kangaroo.Pages
         {
             _logger = logger;
             _cacheLoader = cacheLoader;
-            _cacheLoader.APIToCache();
+            //TODO Fix api calls
+            //_cacheLoader.APIToCache();
 
-            movies = _cacheLoader.LoadMoviesAsync().Result;
+            //movies = _cacheLoader.LoadMoviesAsync().Result;
         }
 
         public void OnGet()
