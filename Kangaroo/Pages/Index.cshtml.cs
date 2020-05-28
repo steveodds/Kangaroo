@@ -22,9 +22,9 @@ namespace Kangaroo.Pages
             _logger = logger;
             _cacheLoader = cacheLoader;
             //TODO Fix api calls
-            //_cacheLoader.APIToCache();
+            _cacheLoader.APIToCache();
 
-            //movies = _cacheLoader.LoadMoviesAsync().Result;
+            movies = _cacheLoader.LoadMoviesAsync().Result;
         }
 
         public void OnGet()
